@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeLeaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Lsita de contactos</title>
 </head>
 <body>
-
+<div th:if="${msgExito !=null}">
+    [[${msgExito}]]
+</div>
 <h1>Lista de contactos</h1>
 <a href="/nuevo"> Añadir contacto</a>
+
+<table>
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Nombre</td>
+        <td>Celular</td>
+        <td>Email</td>
+        <td>F.Nacimiento</td>
+        <td>F.Registro</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contacto : ${contactos}">
+        <td th:text="${contacto.id}">Id</td>
+        <td th:text="${contacto.nombre}">Id</td>
+        <td th:text="${contacto.celular}">Id</td>
+        <td th:text="${contacto.email}">Id</td>
+        <td th:text="${contacto.fechaNacimiento}">Id</td>
+        <td th:text="${contacto.fechaRegistro}">Id</td>
+    </tr>
+
+    </tbody>
+
+</table>
 </body>
 </html>

@@ -1,9 +1,9 @@
 package com.fenix.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,10 +14,17 @@ public class Contacto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank(message = "Debe ingresar su nombre")
     private String nombre;
+    @NotEmpty(message = "Debe ingresar su email")
+    @Email
     private String email;
+    @NotBlank(message = "debe ingresar su celular")
     private String celular;
 
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    @Past
+    @NotNull(message = "Debe ingresar su fecha de nacimiento")
     private LocalDate fechaNacimiento;
 
     private LocalDateTime fechaRegistro;
@@ -81,4 +88,8 @@ public class Contacto {
     public void setFechaRegistro(LocalDateTime fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
+    @PrePersist
+    public void asignarFechaRegistro(){
+        this.fechaRegistro=LocalDateTime.now();
+}
 }

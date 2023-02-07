@@ -2,9 +2,11 @@ package com.fenix.servicio;
 
 import com.fenix.modelo.Contacto;
 import com.fenix.repositorio.ContactoRepositorio;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ServicioContacto implements IntContacto{
 
 
@@ -20,8 +22,8 @@ public class ServicioContacto implements IntContacto{
     }
 
     @Override
-    public void AgregarContacto(Object contacto) {
-
+    public void AgregarContacto(Contacto contacto) {
+        repositorio.save(contacto);
     }
 
     @Override
