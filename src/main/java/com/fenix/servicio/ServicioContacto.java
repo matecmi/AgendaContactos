@@ -20,7 +20,7 @@ public class ServicioContacto implements IntContacto{
     }
 
     @Override
-    public void AgregarContacto() {
+    public void AgregarContacto(Object contacto) {
 
     }
 

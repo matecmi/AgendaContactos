@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeLeaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Registro de contactos</title>
@@ -7,25 +7,25 @@
 <body>
 
 <h3>Registro de contactos</h3>
-<form action="" method="post">
+<form action="" method="post" th:object="${contacto}">
   <div>
     <label for="nombre"> Nombre</label>
-    <input type="text" name="nombre" id="nombre" placeholder="Digite su nombre">
+    <input type="text" id="nombre" placeholder="Digite su nombre" th:field="*{nombre}">
   </div>
   <div>
     <label for="celular">Celular:</label>
-    <input type="text" name="celular" id="celular" placeholder="Digite su celular">
+    <input type="text" name="celular" id="celular" th:field="*{celular}" placeholder="Digite su celular">
   </div>
   <div>
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" placeholder="Digite su email">
+    <input type="email" name="email" id="email"  th:field="*{email}" placeholder="Digite su email">
   </div>
   <div>
     <label for="fechaNacimiento">Fecha nacimiento:</label>
-    <input type="date" id="fechaNacimiento">
+    <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" >
   </div>
   <button type="submit">Guardar</button>
-  <button type="submit">Cancelar</button>
+  <a href="/">Cancelar</a>
 
 </form>
 
